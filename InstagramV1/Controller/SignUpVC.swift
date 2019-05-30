@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpVC: UIViewController {
     
@@ -38,6 +39,7 @@ class SignUpVC: UIViewController {
     let emailTextField : UITextField = {
         let tf = UITextField()
         tf.placeholder = "Enter your Email"
+        tf.addTarget(self, action: #selector(formValidation), for: .editingChanged)
         tf.backgroundColor = UIColor (white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -47,6 +49,8 @@ class SignUpVC: UIViewController {
     let passwordTextField : UITextField = {
         let tf = UITextField()
         tf.placeholder = "Enter your password"
+        tf.isSecureTextEntry = true
+        tf.addTarget(self, action: #selector(formValidation), for: .editingChanged)
         tf.backgroundColor = UIColor (white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -59,6 +63,8 @@ class SignUpVC: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
         button.layer.cornerRadius = 5
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
         return button
     }()
     
@@ -99,6 +105,33 @@ class SignUpVC: UIViewController {
         navigationController?.pushViewController(loginVC, animated: true)
         
     }
+    
+    @objc func handleSignup() {
+        
+        guard let email = emailTextField.text else  { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                print(error!)
+               
+            } else {
+            print("success")
+            }
+        }
+        
+    }
+    
+    @objc func formValidation() {
+        guard emailTextField.hasText, passwordTextField.hasText   else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
+            return }
+      
+        signUpButton.isEnabled = true
+        signUpButton.backgroundColor = UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)
+    }
+
     
     func configureViewComponents() {
         
