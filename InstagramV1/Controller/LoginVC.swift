@@ -62,6 +62,7 @@ class LoginVC: UIViewController {
         attributedTitle.append(NSAttributedString(string: "SignUp", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)]))
         
         button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -71,7 +72,7 @@ class LoginVC: UIViewController {
         
         
         view.backgroundColor = .white
-        
+        navigationController?.navigationBar.isHidden = true
         view.addSubview(logoContainerView)
         
         logoContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 150)
@@ -80,6 +81,13 @@ class LoginVC: UIViewController {
         view.addSubview(signUpButton)
         
         signUpButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingBottom: 30, paddingLeft: 0, paddingRight: 0, width: 0, height: 50)
+    }
+    
+    @objc func handleShowSignUp() {
+        
+        let signUpVC = SignUpVC()
+        navigationController?.pushViewController(signUpVC, animated: true)
+        
     }
     
     func configureViewComponents() {
