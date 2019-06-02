@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
     
@@ -31,6 +32,7 @@ class LoginVC: UIViewController {
         tf.backgroundColor = UIColor (white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.addTarget(self, action: #selector(formValidation), for: .editingChanged)
         return tf
     }()
     
@@ -40,6 +42,8 @@ class LoginVC: UIViewController {
         tf.backgroundColor = UIColor (white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.isSecureTextEntry = true
+        tf.addTarget(self, action: #selector(formValidation), for: .editingChanged)
         return tf
     }()
 
@@ -50,6 +54,8 @@ class LoginVC: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
         button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -87,6 +93,38 @@ class LoginVC: UIViewController {
         
         let signUpVC = SignUpVC()
         navigationController?.pushViewController(signUpVC, animated: true)
+        
+    }
+    
+    @objc func handleLogin() {
+        
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            
+            if let error = error {
+                print("unable to sign with email and password", error.localizedDescription)
+                return
+            }
+            
+            print("sucess")
+        }
+    
+        
+    }
+    
+    @objc func formValidation() {
+        
+        guard emailTextField.hasText,
+            passwordTextField.hasText
+             else {
+                loginButton.isEnabled = false
+                loginButton.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
+                return }
+        
+        loginButton.isEnabled = true
+        loginButton.backgroundColor = UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)
         
     }
     
