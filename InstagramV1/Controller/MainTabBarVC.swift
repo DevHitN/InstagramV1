@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
 
@@ -15,6 +16,7 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
         
         self.delegate = delegate
         configureViewControllers()
+        checkUserIfLogin()
 
         // Do any additional setup after loading the view.
     }
@@ -46,6 +48,19 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
         navController.navigationBar.tintColor = .black
         
         return navController
+        
+    }
+    
+    func checkUserIfLogin() {
+        
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let loginVC = LoginVC()
+                let navController = UINavigationController(rootViewController: loginVC)
+                self.present(navController, animated: true, completion: nil)
+            }
+            return
+        } 
         
     }
 

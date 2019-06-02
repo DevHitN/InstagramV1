@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         window = UIWindow()
-        window?.rootViewController = UINavigationController(rootViewController: LoginVC())
+        //window?.rootViewController = UINavigationController(rootViewController: LoginVC())
+        window?.rootViewController = MainTabBarVC()
  
         
         return true
