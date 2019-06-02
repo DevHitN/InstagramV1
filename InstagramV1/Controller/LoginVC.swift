@@ -109,6 +109,8 @@ class LoginVC: UIViewController {
             }
             
             print("sucess")
+            let mainTabBarVC = MainTabBarVC()
+            self.present(mainTabBarVC, animated: true, completion: nil)
         }
     
         

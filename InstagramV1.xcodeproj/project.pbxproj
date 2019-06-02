@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3654EAFB22A4319F00742B39 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654EAFA22A4319F00742B39 /* MainTabBarVC.swift */; };
+		3654EAFD22A4464100742B39 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654EAFC22A4464100742B39 /* FeedVC.swift */; };
+		3654EAFF22A4467200742B39 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654EAFE22A4467200742B39 /* SearchVC.swift */; };
+		3654EB0122A446AF00742B39 /* UploadPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654EB0022A446AF00742B39 /* UploadPostVC.swift */; };
+		3654EB0322A446D000742B39 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654EB0222A446D000742B39 /* NotificationsVC.swift */; };
+		3654EB0522A4470C00742B39 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654EB0422A4470C00742B39 /* UserProfileVC.swift */; };
 		367601D722A05821002A5510 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367601D622A05821002A5510 /* SignUpVC.swift */; };
 		367601DB22A06984002A5510 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 367601DA22A06984002A5510 /* GoogleService-Info.plist */; };
 		3688C8E6229F931400BD01AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3688C8E5229F931400BD01AA /* AppDelegate.swift */; };
@@ -22,6 +27,11 @@
 /* Begin PBXFileReference section */
 		2401F2AA2734F602B4140375 /* Pods-InstagramV1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramV1.release.xcconfig"; path = "Target Support Files/Pods-InstagramV1/Pods-InstagramV1.release.xcconfig"; sourceTree = "<group>"; };
 		3654EAFA22A4319F00742B39 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		3654EAFC22A4464100742B39 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		3654EAFE22A4467200742B39 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		3654EB0022A446AF00742B39 /* UploadPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostVC.swift; sourceTree = "<group>"; };
+		3654EB0222A446D000742B39 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		3654EB0422A4470C00742B39 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		367601D622A05821002A5510 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		367601DA22A06984002A5510 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3688C8E2229F931400BD01AA /* InstagramV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +113,11 @@
 				3688C8FA229F939600BD01AA /* LoginVC.swift */,
 				367601D622A05821002A5510 /* SignUpVC.swift */,
 				3654EAFA22A4319F00742B39 /* MainTabBarVC.swift */,
+				3654EAFC22A4464100742B39 /* FeedVC.swift */,
+				3654EAFE22A4467200742B39 /* SearchVC.swift */,
+				3654EB0022A446AF00742B39 /* UploadPostVC.swift */,
+				3654EB0222A446D000742B39 /* NotificationsVC.swift */,
+				3654EB0422A4470C00742B39 /* UserProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,11 +274,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3654EAFD22A4464100742B39 /* FeedVC.swift in Sources */,
+				3654EB0322A446D000742B39 /* NotificationsVC.swift in Sources */,
+				3654EB0122A446AF00742B39 /* UploadPostVC.swift in Sources */,
+				3654EB0522A4470C00742B39 /* UserProfileVC.swift in Sources */,
 				367601D722A05821002A5510 /* SignUpVC.swift in Sources */,
 				3654EAFB22A4319F00742B39 /* MainTabBarVC.swift in Sources */,
 				3688C8FB229F939600BD01AA /* LoginVC.swift in Sources */,
 				3688C8FE229FBCD100BD01AA /* Extensions.swift in Sources */,
 				3688C8E6229F931400BD01AA /* AppDelegate.swift in Sources */,
+				3654EAFF22A4467200742B39 /* SearchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
