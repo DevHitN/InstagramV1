@@ -13,6 +13,8 @@ private let reuseIdentifier = "Cell"
 private let headerIdentifier = "UserProfileHeader"
 
 class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,16 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! UserProfileHeader
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+            
+            let currentUid = snapshot.key
+            let user = User(uid: currentUid, dictionary: dictionary)
+            self.navigationItem.title = user.username
+           
+            header.user = user
+        }
         
         return header
         
@@ -66,11 +78,7 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
 
     func fetchCurrentUserData() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("users").child(uid).child("username").observe(.value) { (snapshot) in
-            guard let username = snapshot.value as? String else { return }
-            self.navigationItem.title = username
-        }
+        
         
         
     }

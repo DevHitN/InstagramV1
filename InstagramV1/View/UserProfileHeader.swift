@@ -10,6 +10,18 @@ import UIKit
 
 class UserProfileHeader: UICollectionViewCell {
     
+    var user : User? {
+        
+        didSet {
+            let fullname = user?.name
+            nameLabel.text = fullname
+            
+            profileImageView.loadImage(with: user!.profileImageUrl)
+            
+        }
+    }
+    
+    
     let profileImageView: UIImageView = {
         
         let iv = UIImageView()
@@ -23,7 +35,7 @@ class UserProfileHeader: UICollectionViewCell {
     let nameLabel: UILabel = {
         
         let label = UILabel()
-        label.text = "Heath Ledger"
+        //label.text = "Heath Ledger"
         label.font = UIFont.boldSystemFont(ofSize: 12)
         return label
     }()

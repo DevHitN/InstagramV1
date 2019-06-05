@@ -163,15 +163,15 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     // save user info to database
                     Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (error, ref) in
                         
-                        if let error = error {
-                            
-                            print("Failed to create user with error: ", error.localizedDescription)
+                        guard let mainTabVC = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarVC else { return }
                         
-                        }
-                        
-                        print("Successfully created user and saved information to database")
+                        // configure view controllers in maintabvc
+                        mainTabVC.configureViewControllers()
                         
                         
+                        // dismiss login controller
+                        self.dismiss(animated: true, completion: nil)
+                
                         
                     })
                     

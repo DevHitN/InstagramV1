@@ -39,5 +39,41 @@ extension UIView {
         }
         
     }
-        
+    
 }
+
+var imageCache = [String: UIImage]()
+
+extension UIImageView {
+        
+    func loadImage(with urlString: String) {
+        
+        if let cacheImage = imageCache[urlString] {
+            self.image = cacheImage
+            return
+        }
+        //url for image location
+        guard let url = URL(string: urlString) else {return}
+        //fetch content of url
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            //image data
+            
+            guard let imageData = data else {return}
+            // create image using data
+            let photoImage = UIImage(data: imageData)
+            // set key and value for image cache
+            imageCache[url.absoluteString] = photoImage
+            // set image
+            DispatchQueue.main.async {
+                self.image = photoImage
+            }
+        }.resume()
+    }
+
+}
+        
+
